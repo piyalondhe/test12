@@ -11,7 +11,7 @@ node{
    stage('Maven Build'){
  
 		sh "mvn clean package"
-	   	sh "mv target/*.war target/web-project.war"
+	   	
    }
    
    stage('Deploy Dev'){

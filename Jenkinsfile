@@ -2,11 +2,12 @@ def tomcatIp = '3.64.215.59'
 def tomcatUser = 'ec2-user'
 pipeline{
   agent any
-	stages{	
-   stage('Declarative SCM Checkout'){
+	 triggers { pollSCM('H */4 * * 1-5') }
+	stages{
+		
+  	 stage('Declarative SCM Checkout'){
 	   steps{
-        git branch: 'main', 
-	        url: 'https://github.com/piyalondhe/test12.git'
+        git branch: 'main', url: 'https://github.com/piyalondhe/test12.git'
    }
    }
    stage('Maven Building'){

@@ -3,20 +3,20 @@ def tomcatUser = 'ec2-user'
 pipeline{
   agent any
 	stages{	
-   stage('SCM Checkout'){
+   stage('Declarative SCM Checkout'){
 	   steps{
         git branch: 'main', 
 	        url: 'https://github.com/piyalondhe/test12.git'
    }
    }
-   stage('Maven Build'){
+   stage('Maven Building'){
 	   steps{
 		sh "mvn clean package"
 	   }
 	   	
    }
    
-   stage('Deploy Dev'){
+   stage('Deploying to container'){
 	   
 	   steps{
 	   sshagent(['tomcat-deployer'])  {

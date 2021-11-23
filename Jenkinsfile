@@ -3,7 +3,7 @@ node{
    def tomcatUser = 'ec2-user'
 	
    stage('SCM Checkout'){
-        git branch: 'master', 
+        git branch: 'main', 
 	        url: 'https://github.com/piyalondhe/test12.git'
    }
    stage('Maven Build'){

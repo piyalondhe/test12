@@ -3,9 +3,9 @@ properties([
     number(name: 'tomcatIp', defaultValue: '', description: 'Ip address', )
    ])
 ])
+def tomcatUser = 'ec2-user'
 pipeline{
-   def tomcatUser = 'ec2-user'
-	agent any
+  agent any
 	stages{	
    stage('SCM Checkout'){
 	   steps{

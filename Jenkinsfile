@@ -1,6 +1,6 @@
 properties([
   parameters([
-    number(name: 'tomcatIp', defaultValue: '', description: 'Ip address', )
+    string(name: 'tomcatIp', defaultValue: '', description: 'Ip address', )
    ])
 ])
 def tomcatUser = 'ec2-user'
@@ -29,5 +29,11 @@ pipeline{
       
    }
    }
+		
+	post { 
+        always { 
+            echo 'It will always print!'
+        }
+    }
 }
 }

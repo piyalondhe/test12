@@ -3,11 +3,11 @@ def tomcatUser = 'ec2-user'
 pipeline{
   agent any
 	 triggers { pollSCM('H */4 * * 1-5') }
-	stages{
-		
-  	 stage('Declarative SCM Checkout'){
+	
+stages{
+	stage('SCM Checkout'){
 	   steps{
-        git branch: 'main', url: 'https://github.com/piyalondhe/test12.git'
+		   checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/piyalondhe/test12.git']]])    
    }
    }
    stage('Maven Building'){

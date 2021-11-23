@@ -5,7 +5,8 @@ properties([
 ])
 pipeline{
    def tomcatUser = 'ec2-user'
-	
+	agent any
+	stages{	
    stage('SCM Checkout'){
         git branch: 'main', 
 	        url: 'https://github.com/piyalondhe/test12.git'
@@ -25,4 +26,4 @@ pipeline{
       
    }
 }
-
+}

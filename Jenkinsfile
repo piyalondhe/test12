@@ -30,10 +30,5 @@ pipeline{
    }
    }
 		
-	post { 
-        always { 
-            echo 'It will always print!'
-        }
-    }
 }
 }

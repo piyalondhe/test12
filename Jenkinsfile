@@ -1,9 +1,9 @@
 node{
-   def tomcatIp = '18.193.68.47'
+   def tomcatIp = '3.64.215.59'
    def tomcatUser = 'ec2-user'
 	
    stage('SCM Checkout'){
-        git branch: 'main', 
+        git branch: 'master', 
 	        url: 'https://github.com/piyalondhe/test12.git'
    }
    stage('Maven Build'){

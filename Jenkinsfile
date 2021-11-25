@@ -10,6 +10,7 @@ steps {
 echo 'Cloning repository'
 sh 'git clone 'https://github.com/piyalondhe/test12.git'
 }
+	}
    stage('Maven Building'){
 	   steps{
 		sh "mvn clean package"

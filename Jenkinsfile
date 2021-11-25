@@ -1,7 +1,6 @@
 def tomcatIp = '3.64.11.139'
 def tomcatUser = 'ec2-user'
 node{
-	 triggers { pollSCM('H */4 * * 1-5') }
 	
    stage('Git Checkout') {
 git url: 'https://github.com/piyalondhe/pipeline.git',branch: 'main'

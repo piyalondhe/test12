@@ -3,7 +3,7 @@ def tomcatUser = 'ec2-user'
 node{
 	
    stage('Git Checkout') {
-git url: 'https://github.com/piyalondhe/pipeline.git',branch: 'main'
+git url: 'https://github.com/piyalondhe/test12.git',branch: 'main'
 	}
 	
    stage('Maven Build'){

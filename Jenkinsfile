@@ -14,6 +14,12 @@ git url: 'https://github.com/piyalondhe/test12.git',branch: 'main'
 	   sshagent(['tomcat-deployer'])  {
     sh "scp -o StrictHostKeyChecking=no  /var/lib/jenkins/workspace/pipeline-demo/target/web-project.war ${tomcatUser}@${tomcatIp}:/home/ec2-user/apache-tomcat-9.0.54/webapps/"
 		}  }
+	
+	 post { 
+        always { 
+            cleanWs()
+        }
+    }
 		
 
 }

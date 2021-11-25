@@ -10,7 +10,7 @@ steps {
   git url: 'https://github.com/piyalondhe/pipeline.git',branch: 'main'
 }
 	}
-   stage('Maven Building'){
+   stage('Maven Build'){
 	   steps{
 		sh "mvn clean package"
 	   }

@@ -1,6 +1,6 @@
 <html>
 <body>
-<h2>This is to test jenkins working</h2>
+<h2>This is to test jenkins cicd pipeline</h2>
 
 <button type="button"
 onclick="document.getElementById('demo').innerHTML = Date()">

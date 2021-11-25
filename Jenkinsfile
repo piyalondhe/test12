@@ -3,7 +3,7 @@ def tomcatUser = 'ec2-user'
 pipeline{
 	agent any
 	stages{
-		step{
+		steps{
    stage('Git Checkout') {
 	git url: 'https://github.com/piyalondhe/test12.git',branch: 'main'
 	}

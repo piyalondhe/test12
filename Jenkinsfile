@@ -7,8 +7,7 @@ pipeline{
 stages{
 	stage('Git Checkout') {
 steps {
-echo 'Cloning repository'
-sh 'git clone 'https://github.com/piyalondhe/test12.git'
+  git url: 'https://github.com/piyalondhe/pipeline.git',branch: 'main'
 }
 	}
    stage('Maven Building'){

@@ -1,4 +1,4 @@
-def tomcatIp = '54.93.47.16'
+def tomcatIp = '3.64.11.139'
 def tomcatUser = 'ec2-user'
 pipeline{
   agent any

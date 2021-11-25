@@ -5,11 +5,11 @@ pipeline{
 	 triggers { pollSCM('H */4 * * 1-5') }
 	
 stages{
-	stage('SCM Checkout'){
-	   steps{
-		   checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/piyalondhe/test12.git']]])    
-   }
-   }
+	stage('Git Checkout') {
+steps {
+echo 'Cloning repository'
+sh 'git clone 'https://github.com/piyalondhe/test12.git'
+}
    stage('Maven Building'){
 	   steps{
 		sh "mvn clean package"

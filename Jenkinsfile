@@ -26,6 +26,7 @@ stage ('Nexus Upload') {
       groupId: 'web-project',
       version: '1.0-SNAPSHOT',
       repository: 'maven-snapshots',
+      credentialsId: 'nexus',
       artifacts: [
       [artifactId: 'web-project',
       classifier: '',

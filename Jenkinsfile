@@ -1,4 +1,4 @@
-def tomcatIp = '3.64.11.139'
+def tomcatIp = '3.67.67.51'
 def tomcatUser = 'ec2-user'
 pipeline{
 	agent any
@@ -16,6 +16,24 @@ pipeline{
 	   steps{
 		sh "mvn clean package" }
    }
+
+stage ('Nexus Upload') {
+      steps {
+      nexusArtifactUploader(
+      nexusVersion: 'nexus3',
+      protocol: 'http',
+      nexusUrl: 'ec2-3-67-67-51.eu-central-1.compute.amazonaws.com:8081',
+      groupId: 'web-project',
+      version: '1.0-SNAPSHOT',
+      repository: 'maven-snapshots',
+      artifacts: [
+      [artifactId: 'web-project',
+      classifier: '',
+      file: '/var/lib/jenkins/workspace/maven-test/target/web-project.war',
+      type: 'war']
+      ])
+      }
+    }
    
    stage('Deploying to container'){
 	   steps{

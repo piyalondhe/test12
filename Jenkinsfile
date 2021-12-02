@@ -1,4 +1,4 @@
-def tomcatIp = '3.67.67.51'
+def tomcatIp = '3.68.198.226'
 def tomcatUser = 'ec2-user'
 pipeline{
 	agent any
@@ -22,7 +22,7 @@ stage ('Nexus Upload') {
       nexusArtifactUploader(
       nexusVersion: 'nexus3',
       protocol: 'http',
-      nexusUrl: 'ec2-3-67-67-51.eu-central-1.compute.amazonaws.com:8081',
+      nexusUrl: 'ec2-3-68-198-226.eu-central-1.compute.amazonaws.com:8081',
       groupId: 'web-project',
       version: '1.0-SNAPSHOT',
       repository: 'maven-snapshots',

@@ -22,7 +22,7 @@ stage('artifacts to s3') {
 	steps{
  withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credential', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 	   
-	 sh "aws s3 ls"
+	 sh "aws s3 --region eu-central-1 ls"
 	 sh "aws s3  mb s3://artifactsuploads-to-s3"
          sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-demo/target/web-project.war s3://artifactsuploads-to-s3/"
          }

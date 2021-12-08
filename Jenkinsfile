@@ -24,7 +24,7 @@ stage('artifacts to s3') {
 	   
 	 sh "aws s3 ls"
 	 //sh "aws s3 mb s3://artifactsupload-to-s3"
-         sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-demo/target/web-project.war s3://artifactsupload-to-s3/"
+         sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-demo/target/web-project.war s3://artifactsuploads-to-s3/"
          }
            
 	}

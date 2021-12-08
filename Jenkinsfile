@@ -18,16 +18,18 @@ pipeline{
    }
 
 
-stage('Artifacts to s3')
-		{
-	steps{
-withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {
-    sh "aws s3 ls"
-    sh "aws s3 mb s3://artifacts-to-upload"
-    sh "aws s3 cp /var/lib/jenkins/workspace/maven-test/target/web-project.war s3://artifacts-to-upload"
-}
-			}
-		}
+stage('artifacts to s3') {
+      try {
+      // you need cloudbees aws credentials
+      withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-cred', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+         sh "aws s3 ls"
+	 sh "aws s3 mb s3://artifacts-to-s3"
+         sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-demo/target/web-project.war s3://cloudyeticicd/"
+         }
+      } catch(err) {
+         sh "echo error in sending artifacts to s3"
+      }
+   }
    
    stage('Deploying to container'){
 	   steps{

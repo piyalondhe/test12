@@ -38,10 +38,6 @@ stage('artifacts to s3') {
    }
 		
 	}
-	 post { 
-        always { 
-            cleanWs()
-        }
-    }
+	
 		
 }

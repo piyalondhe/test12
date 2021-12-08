@@ -14,7 +14,7 @@ pipeline{
 	
    stage('Maven Build'){
 	   steps{
-		sh "mvn clean package" }
+		sh "mvn clean package -Dv=${BUILD_NUMBER}" }
    }
 
 
@@ -24,7 +24,7 @@ stage('artifacts to s3') {
 	  //sh "aws sts get-session-token --profile priyanka --serial-number arn:aws:iam::995615868335:mfa/A119916966 --token-code 936959"
 	 sh "aws s3 --region eu-central-1 ls"
 	 //sh "aws s3  mb s3://artifactsuploads-to-s3"
-         sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-demo/target/web-project.war s3://artifactsupload-to-s3/"
+	 sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-demo/target/web-project.war s3://artifactsupload-to-s3/"
          }
            
 	}

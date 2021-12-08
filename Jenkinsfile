@@ -20,7 +20,7 @@ pipeline{
 
 stage('artifacts to s3') {
 	steps{
-withAWS(credentials: 'aws-cred1', profile: 'priyanka', region: 'eu-central-1') {
+withAWS(credentials: 'aws-cred1', profile: 'priyanka', region: 'eu-central-1',role: 'arn:aws:iam::995615868335:role/csvtodynamodb-lambda-role') {
 	sh "aws s3 --region eu-central-1 ls"
 	 sh "aws s3  mb s3://artifactsuploads-to-s3"
 	 sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-demo/target/web-project.war s3://artifactsupload-to-s3/"    

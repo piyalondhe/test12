@@ -25,7 +25,7 @@ withAWS(credentials: 'aws-cred1', profile: 'default', region: 'eu-central-1') {
 	 sh "aws s3  mb s3://artifactsuploads-to-s3"
 	 sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-demo/target/web-project.war s3://artifactsupload-to-s3/"    
 
-}}
+}
            
 	}
    }

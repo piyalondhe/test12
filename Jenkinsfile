@@ -20,7 +20,7 @@ pipeline{
 
 stage('artifacts to s3') {
 	steps{
- withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credential', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+ withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-cred', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 	  //sh "aws sts get-session-token --profile priyanka --serial-number arn:aws:iam::995615868335:mfa/A119916966 --token-code 936959"
 	 sh "aws s3 --region eu-central-1 ls"
 	 sh "aws s3  mb s3://artifactsuploads-to-s3"

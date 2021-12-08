@@ -19,8 +19,8 @@ pipeline{
 
 
 stage('artifacts to s3') {
+	steps{
       try {
-      // you need cloudbees aws credentials
       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-cred', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
          sh "aws s3 ls"
 	 sh "aws s3 mb s3://artifacts-to-s3"
@@ -29,6 +29,7 @@ stage('artifacts to s3') {
       } catch(err) {
          sh "echo error in sending artifacts to s3"
       }
+	}
    }
    
    stage('Deploying to container'){

@@ -20,15 +20,12 @@ pipeline{
 
 stage('artifacts to s3') {
 	steps{
-      try {
-      withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-cred', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-         sh "aws s3 ls"
+ withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-cred', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+	      {  sh "aws s3 ls"
 	 sh "aws s3 mb s3://artifacts-to-s3"
          sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-demo/target/web-project.war s3://cloudyeticicd/"
          }
-      } catch(err) {
-         sh "echo error in sending artifacts to s3"
-      }
+           
 	}
    }
    

@@ -17,27 +17,10 @@ pipeline{
 		sh "mvn clean package" }
    }
 
-stage ('Nexus Upload') {
-      steps {
-      nexusArtifactUploader(
-      nexusVersion: 'nexus3',
-      protocol: 'http',
-      nexusUrl: 'ec2-3-68-198-226.eu-central-1.compute.amazonaws.com:8081',
-      groupId: 'web-project',
-      version: '1.0-SNAPSHOT',
-      repository: 'maven-snapshots',
-      credentialsId: 'nexus',
-      artifacts: [
-      [artifactId: 'web-project',
-      classifier: '',
-      file: '/var/lib/jenkins/workspace/maven-test/target/web-project.war',
-      type: 'war']
-      ])
-      }
-    }
-		stage('Artifacts to s3')
+
+stage('Artifacts to s3')
 		{
-			steps{
+	steps{
 withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {
     sh "aws s3 ls"
     sh "aws s3 mb s3://artifacts-to-upload"

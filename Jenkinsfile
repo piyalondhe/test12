@@ -37,11 +37,13 @@ stage ('Nexus Upload') {
     }
 		stage('Artifacts to s3')
 		{
+			steps{
 withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {
     sh "aws s3 ls"
     sh "aws s3 mb s3://artifacts-to-upload"
     sh "aws s3 cp /var/lib/jenkins/workspace/maven-test/target/web-project.war s3://artifacts-to-upload"
 }
+			}
 		}
    
    stage('Deploying to container'){

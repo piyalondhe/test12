@@ -22,7 +22,7 @@ stage('artifacts to s3') {
 	steps{
 withAWS(region: 'eu-central-1', role: 's3role') {
 	sh "aws s3 --region eu-central-1 ls"
-	 sh "aws s3  mb s3://artifactsuploads-to-s3"
+	 //sh "aws s3  mb s3://artifactsuploads-to-s3"
 	 sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-demo/target/web-project.war s3://artifactsuploads-to-s3/"    
 
 }

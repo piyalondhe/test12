@@ -14,7 +14,7 @@ pipeline{
 	
    stage('Maven Build'){
 	   steps{
-		sh "mvn clean install -Dv=${BUILD_NUMBER}" }
+		sh "mvn clean install" }
    }
 
 
@@ -30,7 +30,7 @@ withAWS(region: 'eu-central-1', role: 's3role') {
 	}
    }
    
-   stage('Deploying to container'){
+   stage('Deploying to web-server'){
 	   steps{
 	   sshagent(['tomcat-deployer'])  {
     sh "scp -o StrictHostKeyChecking=no  /var/lib/jenkins/workspace/pipeline-test/target/web-project.war ${tomcatUser}@${tomcatIp}:/home/ec2-user/apache-tomcat-9.0.54/webapps/"

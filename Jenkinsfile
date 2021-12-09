@@ -3,7 +3,7 @@ def tomcatUser = 'ec2-user'
 pipeline{
 	agent any
 	triggers {
-        cron('* * * * 1-5')
+        cron('*/30 * * * 1-5')
     }
 	stages{
    stage('Git Checkout') {

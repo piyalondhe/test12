@@ -8,7 +8,6 @@ pipeline{
         AWS_EB_APP_NAME = 'MyApp'
         AWS_EB_ENVIRONMENT = 'MyApp'
         AWS_EB_APP_VERSION = "${BUILD_ID}"
-	AWS_EB_STACK= '"64bit Amazon Linux 2 v4.2.8 running Tomcat 8.5 Corretto 11"'
     }
 	triggers {
         cron('* * * * 1-5')

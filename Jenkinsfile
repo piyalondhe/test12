@@ -33,12 +33,7 @@ withAWS(region: 'eu-central-1', role: 's3role')
 	{
 	sh "aws s3 ls"
 	 sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-test/target/web-project.war s3://artifactsuploads-to-s3/"   
-	 //sh "aws elasticbeanstalk --region eu-central-1 create-application --application-name MyApp "
-
-//sh 'aws elasticbeanstalk --region eu-central-1  create-application-version --application-name $AWS_EB_APP_NAME --version-label $AWS_EB_APP_VERSION --source-bundle S3Bucket=$AWS_S3_BUCKET,S3Key=$ARTIFACT_NAME'
-		
-sh 'aws elasticbeanstalk --region eu-central-1 create-environment --application-name $AWS_EB_APP_NAME --environment-name  $AWS_EB_ENVIRONMENT --version-label $AWS_EB_APP_VERSION --solution-stack-name $AWS_EB_STACK'
-
+	
 
 
 }
@@ -49,10 +44,14 @@ sh 'aws elasticbeanstalk --region eu-central-1 create-environment --application-
 	
    stage('Deploying to web-server'){
 	   steps{
-	   sshagent(['tomcat-deployer'])  {
-    sh "scp -o StrictHostKeyChecking=no  /var/lib/jenkins/workspace/pipeline-test/target/web-project.war ${tomcatUser}@${tomcatIp}:/home/ec2-user/apache-tomcat-9.0.54/webapps/"
-		}  }
+		    //sh "aws elasticbeanstalk --region eu-central-1 create-application --application-name MyApp "
+		   sh 'aws elasticbeanstalk --region eu-central-1  create-application-version --application-name $AWS_EB_APP_NAME --version-label $AWS_EB_APP_VERSION --source-bundle S3Bucket=$AWS_S3_BUCKET,S3Key=$ARTIFACT_NAME'
+		
+
+
+	     }
    }
+		
 		
 	}
 	

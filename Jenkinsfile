@@ -20,7 +20,9 @@ pipeline{
 
 stage('artifacts to s3') {
 	steps{
-withAWS(region: 'eu-central-1', role: 's3role', roleAccount: '995615868335') { {
+withAWS(region: 'eu-central-1', role: 's3role', roleAccount: '995615868335')
+		 
+	{
 	sh "aws s3 ls"
 	 sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-test/target/web-project.war s3://artifactsuploads-to-s3/"    
 

@@ -33,9 +33,8 @@ withAWS(region: 'eu-central-1', role: 's3role') {
 	stage('Deploy to EBS') {
 	steps{
 withAWS(region: 'eu-central-1', role: 's3role') {
-	sh "aws elasticbeanstalk check-dns-availability --cname-prefix my-cname"
 	sh "aws elasticbeanstalk create-application-version --application-name my-application --version-label v1 --source-bundle S3Bucket=artifactsuploads-to-s3,S3Key=web-project.war"
-	sh "aws elasticbeanstalk create-environment --cname-prefix my-cname --application-name my-app --version-label v1 --environment-name my-env --solution-stack-name "64bit Amazon Linux 2015.03 v2 running Tomcat 8 Java 8""    
+	//sh "aws elasticbeanstalk create-environment --cname-prefix my-cname --application-name my-app --version-label v1 --environment-name my-env --solution-stack-name "64bit Amazon Linux 2015.03 v2 running Tomcat 8 Java 8""    
 
 }
            

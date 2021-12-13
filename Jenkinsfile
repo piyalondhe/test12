@@ -20,7 +20,7 @@ pipeline{
 
 stage('artifacts to s3') {
 	steps{
-withAWS(region: 'eu-central-1', role: 's3role', roleAccount: '995615868335')
+withAWS(region: 'eu-central-1', role: 's3role')
 		 
 	{
 	sh "aws s3 ls"

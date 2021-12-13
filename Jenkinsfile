@@ -1,4 +1,4 @@
-def tomcatIp = '18.196.15.151'
+def tomcatIp = '18.184.98.114'
 def tomcatUser = 'ec2-user'
 pipeline{
 	agent any
@@ -30,16 +30,7 @@ withAWS(region: 'eu-central-1', role: 's3role') {
 	}
    }
    
-	stage('Deploy to EBS') {
-	steps{
-withAWS(region: 'eu-central-1', role: 's3role') {
-	sh "aws elasticbeanstalk create-application-version --application-name my-application --version-label v1 --source-bundle S3Bucket=artifactsuploads-to-s3,S3Key=web-project.war"
-	//sh "aws elasticbeanstalk create-environment --cname-prefix my-cname --application-name my-app --version-label v1 --environment-name my-env --solution-stack-name "64bit Amazon Linux 2015.03 v2 running Tomcat 8 Java 8""    
-
-}
-           
-	}
-   }
+	
    stage('Deploying to web-server'){
 	   steps{
 	   sshagent(['tomcat-deployer'])  {

@@ -25,11 +25,11 @@ withAWS(region: 'eu-central-1', role: 's3role')
 	{
 	sh "aws s3 ls"
 	 sh "aws s3 cp /var/lib/jenkins/workspace/pipeline-test/target/web-project.war s3://artifactsuploads-to-s3/"   
-	sh "aws elasticbeanstalk create-application --application-name MyApp --description "my application""
+	//sh "aws elasticbeanstalk create-application --application-name MyApp --description "my application""
 
-sh "aws elasticbeanstalk --region eu-central-1 create-application-version --application-name My-App --version-label v1 --description MyAppv1 --source-bundle S3Bucket="artifactsuploads-to-s3",S3Key="web-project.war" --auto-create-application"
+//sh "aws elasticbeanstalk --region eu-central-1 create-application-version --application-name My-App --version-label v1 --description MyAppv1 --source-bundle S3Bucket="artifactsuploads-to-s3",S3Key="web-project.war" --auto-create-application"
 
-sh "aws elasticbeanstalk --region eu-central-1 create-environment --application-name My-app --environment-name my-env --cname-prefix My-app --version-label v1 --solution-stack-name "64bit Amazon Linux 2018.03 'v3.4.0' running Tomcat 8 Java 8""
+//sh "aws elasticbeanstalk --region eu-central-1 create-environment --application-name My-app --environment-name my-env --cname-prefix My-app --version-label v1 --solution-stack-name "64bit Amazon Linux 2018.03 'v3.4.0' running Tomcat 8 Java 8""
 
 
 
